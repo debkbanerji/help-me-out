@@ -1,0 +1,30 @@
+<nav-bar></nav-bar>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="container-fluid">
+            <div class="panel">
+                <div style="padding: 10px">
+                    <!--<h2>Hello, {{self.user}}</h2>-->
+                    <h2>Request a Service</h2>
+                    <h3>On this page you can request a service and choose the level of urgency with which you need that
+                        service</h3>
+                    <br>
+                    <form ng-submit="$ctrl.submitRequest()" class="form-inline" style="width: 100%">
+                        <h3>What service do you need?</h3>
+                        <select ng-model="$ctrl.selectedServiceName" ng-options="x for x in $ctrl.servicesList">
+                        </select>
+                        <h3>How Urgently do you need it?</h3>
+                        <select ng-model="$ctrl.selectedPriority" ng-options="x for x in $ctrl.urgencyList">
+                        </select>
+                        <br>
+                        <br>
+                        <!--<a class="btn btn-info">Submit Request</a>-->
+                        <input type="submit" class="btn btn-raised btn-success" value="Submit Request"
+                               style="margin-top: 1px">
+                    </form>
+                    <h2  class="text-success" id="submit-result-text" ng-model="$ctrl.submitResultText"></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

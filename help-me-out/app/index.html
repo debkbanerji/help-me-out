@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" data-ng-app="helpMeOutApp">
+<head>
+    <link rel='shortcut icon' href='/assets/favicon.png' type='image/x-icon'/>
+    <meta charset="utf-8">
+    <base href="/">
+    <title>Help Me Out</title>
+    <!--<link rel="shortcut icon" type="image/png" href="assets/Favicon.png"/>-->
+
+    <meta property="og:title" content="Help Me Out"/>
+    <meta property="og:description" content="Help Me Out is an application that connects people with the services that they need, by distributing them based on priority"/>
+    <meta property="og:image" content="PREVIEW_IMAGE_URL"/>
+
+    <!--JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Bootstrap Material Design -->
+    <link href="CSS/bootstrap-material-design.min.css" rel="stylesheet">
+    <link href="CSS/ripples.min.css" rel="stylesheet">
+    <script src="JS/material.min.js"></script>
+    <script src="JS/ripples.min.js"></script>
+
+    <!-- Dropdown.js -->
+    <link href="//cdn.rawgit.com/FezVrasta/dropdown.js/master/jquery.dropdown.css" rel="stylesheet">
+
+    <!--Custom css-->
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="app.animations.css">
+
+
+    <!--AngularJS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyD2jc9HzKpHsnMx1qb8rirWzLpHmN9kC9g",
+            authDomain: "help-me-out-3d93f.firebaseapp.com",
+            databaseURL: "https://help-me-out-3d93f.firebaseio.com",
+            projectId: "help-me-out-3d93f",
+            storageBucket: "help-me-out-3d93f.appspot.com",
+            messagingSenderId: "431196949438"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.0/angularfire.min.js"></script>
+
+
+    <!--Modules-->
+
+    <!--main 'app' module-->
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+
+    <!--'login' module-->
+    <script src="login/login.module.js"></script>
+    <script src="login/login.component.js"></script>
+
+    <!--'nav-bar' module-->
+    <script src="nav-bar/nav-bar.module.js"></script>
+    <script src="nav-bar/nav-bar.component.js"></script>
+
+    <!--'about' module-->
+    <script src="about/about.module.js"></script>
+    <script src="about/about.component.js"></script>
+
+    <!--'request-a-service' module-->
+    <script src="request-a-service/request-a-service.module.js"></script>
+    <script src="request-a-service/request-a-service.component.js"></script>
+
+    <!--'distribute-services' module-->
+    <script src="distribute-services/distribute-services.module.js"></script>
+    <script src="distribute-services/distribute-services.component.js"></script>
+
+    <!--'view-assignments' module-->
+    <script src="view-assignments/view-assignments.module.js"></script>
+    <script src="view-assignments/view-assignments.component.js"></script>
+
+</head>
+<body>
+
+<div class="jumbotron heading" style="width: 100vw">
+    <h1 class="heading">Help Me Out</h1>
+</div>
+
+<div class="view-container">
+    <div data-ng-view class="view-frame"></div>
+</div>
+
+<!--<br>-->
+<!--<br>-->
+
+</body>
+</html>
+

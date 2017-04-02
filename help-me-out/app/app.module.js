@@ -1,0 +1,1 @@
+angular.module('helpMeOutApp', ['ngRoute', 'ngAnimate', 'login', 'firebase', 'navBar', 'requestAService', 'about', 'distributeServices', 'viewAssignments']);
