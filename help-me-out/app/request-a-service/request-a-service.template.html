@@ -8,6 +8,15 @@
                     <h2>Request a Service</h2>
                     <h3>On this page you can request a service and choose the level of urgency with which you need that
                         service</h3>
+                    <div style="padding: 10px">
+                        <label style="color: #1a1a1a">
+                            <input id="new-service-input" style="color: #1a1a1a" type="text" name="input"
+                                   ng-model="newServiceText">
+                        </label>
+                        <a class="btn btn-info"
+                           ng-click="$ctrl.createService()">Create New Service</a>
+                        <!--<h2 ng-model="messageText"></h2>-->
+                    </div>
                     <br>
                     <form ng-submit="$ctrl.submitRequest()" class="form-inline" style="width: 100%">
                         <h3>What service do you need?</h3>
@@ -22,7 +31,7 @@
                         <input type="submit" class="btn btn-raised btn-success" value="Submit Request"
                                style="margin-top: 1px">
                     </form>
-                    <h2  class="text-success" id="submit-result-text" ng-model="$ctrl.submitResultText"></h2>
+                    <h2 class="text-success" id="submit-result-text" ng-model="$ctrl.submitResultText"></h2>
                 </div>
             </div>
         </div>

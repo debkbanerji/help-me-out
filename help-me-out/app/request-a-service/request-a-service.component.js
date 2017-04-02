@@ -59,6 +59,14 @@ angular.module('requestAService').component('requestAService', {
 
         };
 
+        self.createService = function () {
+            var newServiceName = document.getElementById('new-service-input').value;
+            if (newServiceName != "") {
+                self.servicesRef.child(newServiceName).child("name").set(newServiceName);
+                $route.reload();
+            }
+        };
+
         self.formatDate = function (date, format, utc) {
             var MMMM = ["\x00", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             var MMM = ["\x01", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
