@@ -1,6 +1,6 @@
-Help Me Out
+Service Ninja
 
-Help Me Out is an application that connects people with the services that they need, by sorting them based on priority. The priority is calculated by taking into account both the time of the request and the urgency of the request.
+Service Ninja is an application that connects people with the services that they need, by sorting them based on priority. The priority is calculated by taking into account both the time of the request and the urgency of the request.
 
 This relatively simple app was made for 'Midnight Madness' at HackGSU 2017
 
