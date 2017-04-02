@@ -1,0 +1,17 @@
+
+        {
+        "name": "help-me-out",
+  "version": "1.0.0",
+  "description": "Help Me Out is an application that connects people with the services that they need, by distributing them based on priority",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node help-me-out/server.js"
+  },
+  "author": "Deb Banerji",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
+}
