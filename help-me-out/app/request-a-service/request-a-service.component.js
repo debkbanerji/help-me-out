@@ -12,7 +12,6 @@ angular.module('requestAService').component('requestAService', {
         self.servicesArray.$loaded(
             function (data) {
                 for (var i = 0; i < data.length; i++) {
-                    console.log(self.servicesArray[i]);
                     self.servicesList.push(self.servicesArray[i].name)
                 }
             },
@@ -22,10 +21,15 @@ angular.module('requestAService').component('requestAService', {
         );
 
         self.urgencyList = ["Take Your Time", "Important", "Urgent", "Very Urgent", "Critical"];
+        self.urgencyMap = {
+            "Take Your Time": 28800000,
+            "Important": 14400000,
+            "Urgent": 7200000,
+            "Very Urgent": 3600000,
+            "Critical": 0
+        };
 
         self.submitRequest = function () {
-            // console.log(self.selectedServiceName);
-            // console.log(self.selectedPriority);
             if (self.selectedServiceName !== undefined && self.selectedPriority !== undefined) {
                 var actualDate = new Date();
                 var x = document.getElementById("submit-result-text");
@@ -35,12 +39,19 @@ angular.module('requestAService').component('requestAService', {
                 // console.log(self.submitResultText)
                 var serviceRef = self.servicesRef.child(self.selectedServiceName);
                 // totalRef = self
+                // newKey = serviceRef.child("requests").$push();
                 requestRef = serviceRef.child("requests")
-                    .child(self.user.uid);
+                    .child(actualDate.getTime());
+                // .child(self.user.uid);
+                adjustedTime = actualDate.getTime() + self.urgencyMap[self.selectedPriority];
                 // request = {"requesterUID": self.user.uid, "requesterName": self.user};
                 requestRef.child("requesterUID").set(self.user.uid);
                 requestRef.child("requesterName").set(self.user.displayName);
-                requestRef.child("requestTime").set(actualDate.getTime())
+                requestRef.child("requestTime").set(actualDate.getTime());
+                requestRef.child("adjustedTime").set(adjustedTime);
+                requestRef.child("priority").set(self.selectedPriority);
+                requestRef.child("serviceName").set(self.selectedServiceName);
+                requestRef.child("dateTimeText").set(dateTimeText);
             }
 
         };
