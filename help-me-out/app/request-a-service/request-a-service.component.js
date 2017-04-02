@@ -21,23 +21,31 @@ angular.module('requestAService').component('requestAService', {
             }
         );
 
-        self.urgencyList = ["Take Your Time", "Important", "Urgent", "Very Urgent", "Critical"]
+        self.urgencyList = ["Take Your Time", "Important", "Urgent", "Very Urgent", "Critical"];
 
         self.submitRequest = function () {
-            console.log(self.selectedServiceName);
-            console.log(self.selectedPriority);
-            if (self.selectedServiceName !== null && self.selectedPriority !== null) {
-                var d = new Date();
+            // console.log(self.selectedServiceName);
+            // console.log(self.selectedPriority);
+            if (self.selectedServiceName !== undefined && self.selectedPriority !== undefined) {
+                var actualDate = new Date();
                 var x = document.getElementById("submit-result-text");
-                dateTimeText = self.formatDate(d, "dddd h:mmtt d MMM yyyy");
+                dateTimeText = self.formatDate(actualDate, "dddd h:mmtt d MMM yyyy");
                 self.submitResultText = "Request successfully sent on " + dateTimeText;
                 x.innerHTML = self.submitResultText;
                 // console.log(self.submitResultText)
+                var serviceRef = self.servicesRef.child(self.selectedServiceName);
+                // totalRef = self
+                requestRef = serviceRef.child("requests")
+                    .child(self.user.uid);
+                // request = {"requesterUID": self.user.uid, "requesterName": self.user};
+                requestRef.child("requesterUID").set(self.user.uid);
+                requestRef.child("requesterName").set(self.user.displayName);
+                requestRef.child("requestTime").set(actualDate.getTime())
             }
-            
+
         };
 
-        self.formatDate = function(date, format, utc) {
+        self.formatDate = function (date, format, utc) {
             var MMMM = ["\x00", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             var MMM = ["\x01", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
             var dddd = ["\x02", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
