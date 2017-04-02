@@ -40,10 +40,13 @@ angular.module('requestAService').component('requestAService', {
                 var serviceRef = self.servicesRef.child(self.selectedServiceName);
                 // totalRef = self
                 // newKey = serviceRef.child("requests").$push();
-                requestRef = serviceRef.child("requests")
-                    .child(actualDate.getTime());
+
                 // .child(self.user.uid);
                 adjustedTime = actualDate.getTime() + self.urgencyMap[self.selectedPriority];
+
+                requestRef = serviceRef.child("requests")
+                    .child(adjustedTime);
+
                 // request = {"requesterUID": self.user.uid, "requesterName": self.user};
                 requestRef.child("requesterUID").set(self.user.uid);
                 requestRef.child("requesterName").set(self.user.displayName);
@@ -51,7 +54,7 @@ angular.module('requestAService').component('requestAService', {
                 requestRef.child("adjustedTime").set(adjustedTime);
                 requestRef.child("priority").set(self.selectedPriority);
                 requestRef.child("serviceName").set(self.selectedServiceName);
-                requestRef.child("dateTimeText").set(dateTimeText);
+                requestRef.child("requestTimeText").set(dateTimeText);
             }
 
         };

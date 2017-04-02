@@ -12,9 +12,17 @@ angular.module('distributeServices').component('distributeServices', {
         self.inputText = document.getElementById("message-input");
         self.inputText.textContent = self.contactInformation;
 
-        requestTemplate = {"adjustedTime":1491126674401,"dateTimeText":"Sunday 1:51am 2 Apr 2017","priority":"Important","requestTime":1491112274401,"requesterName":"Deb Banerji","requesterUID":"CMg3KhbnIHM5UtF9lhxduZKltEr1","serviceName":"wheelchair"}
+        requestTemplate = {
+            "adjustedTime": 1491126674401,
+            "dateTimeText": "Sunday 1:51am 2 Apr 2017",
+            "priority": "Important",
+            "requestTime": 1491112274401,
+            "requesterName": "Deb Banerji",
+            "requesterUID": "CMg3KhbnIHM5UtF9lhxduZKltEr1",
+            "serviceName": "wheelchair"
+        };
 
-        $scope.arrFromMyObj = Object.keys(requestTemplate).map(function(key) {
+        $scope.arrFromMyObj = Object.keys(requestTemplate).map(function (key) {
             return requestTemplate[key];
         });
 
@@ -22,9 +30,16 @@ angular.module('distributeServices').component('distributeServices', {
             var contactText = document.getElementById('message-input').value;
             var fulfilmentDate = new Date();
             var dateTimeText = self.formatDate(fulfilmentDate, "dddd h:mmtt d MMM yyyy");
-            var result = {"fulfilmentTime": fulfilmentDate.getTime(), "fulfilmentTimeText": dateTimeText, "contactText": contactText};
-            self.usersRef.child(request.requesterUID).child(request.requestTime).set(result);
-            self.servicesRef.child(serviceName).child("requests").child(request.requestTime).set(null);
+            var result = {
+                "fulfilmentTime": fulfilmentDate.getTime(),
+                "fulfilmentTimeText": dateTimeText,
+                "contactText": contactText,
+                "serviceName": request.serviceName,
+                "requestTimeText": request.requestTimeText,
+                "priority":request.priority
+            };
+            self.usersRef.child(request.requesterUID).child(result.fulfilmentTime).set(result);
+            self.servicesRef.child(serviceName).child("requests").child(request.adjustedTime).set(null);
         };
 
         self.formatDate = function (date, format, utc) {

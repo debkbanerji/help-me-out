@@ -14,7 +14,7 @@
                 <div class="panel">
                     <div style="padding: 10px">
                         <h2><b>Service Name: {{service.name}}</b></h2>
-                        <h3>Requests:</h3>
+                        <h3>List of Requests</h3>
                     </div>
                 </div>
                 <div>
@@ -34,7 +34,7 @@
                                 <h4>Time of Request: {{request.dateTimeText}}</h4>
                                 <h4>Request Priority: {{request.priority}}</h4>
                                 <a class="btn btn-info"
-                                   ng-click="$ctrl.fulfilRequest(service.name, request)">Fulfil
+                                   ng-click="$ctrl.fulfilRequest(service.name, request)">Fulfill
                                     Request</a>
                             </div>
                         </div>

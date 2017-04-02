@@ -4,6 +4,7 @@ angular.module('viewAssignments').component('viewAssignments', {
     controller: ['$routeParams', '$route', '$firebaseObject', '$firebaseArray', function viewAssignmentsController($routeParams, $route, $firebaseObject, $firebaseArray) {
         var self = this;
         var user = firebase.auth().currentUser;
-        self.viewAssignmentsRef = firebase.database().ref().child("users").child(user.uid).child("view-assignments");
+        self.requestsRef = firebase.database().ref().child("users").child(user.uid);
+        self.requestsArray =  $firebaseArray(self.requestsRef)
     }]
 });
