@@ -26,12 +26,13 @@ angular.module('requestAService').component('requestAService', {
             "Important": 14400000,
             "Urgent": 7200000,
             "Very Urgent": 3600000,
-            "Critical": 0
+            "Critical": 1800000
         };
 
         self.submitRequest = function () {
             if (self.selectedServiceName !== undefined && self.selectedPriority !== undefined) {
                 var actualDate = new Date();
+                // actualDate = new Date(actualDate.getTime() - 14400000);
                 var x = document.getElementById("submit-result-text");
                 dateTimeText = self.formatDate(actualDate, "dddd h:mmtt d MMM yyyy");
                 self.submitResultText = "Request successfully sent on " + dateTimeText;
